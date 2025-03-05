@@ -1,7 +1,6 @@
 .component {
-  margin-left: 550px;
-  padding-top: 100px;
   width: 500px;
+  padding-top: 50px;
 }
 
 .dropdown-toggle button {
@@ -14,9 +13,13 @@
 .panel {
   width: 100%;
   /* border: 1px solid slategray; */
-  /* padding: 10px; */
-  /* background-color: red; */
+  padding: 10px 5px 10px 5px;
+  background-color: rgb(128, 128, 128, 0.2);
   border-radius: 4px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+.checkbox-label {
+  cursor: pointer;
 }

@@ -3,13 +3,18 @@ import React, { useState } from "react";
 import { cities } from "../cities";
 
 const Dropdown = () => {
-  const [isDropdownShown, setIsDropdownShown] = useState(true);
+  const [isDropdownShown, setIsDropdownShown] = useState(false);
   return (
     <div>
       <div className="dropdown-toggle">
-        <button>
-          -- Select your choice --
+        <button
+          onClick={() => setIsDropdownShown((prev) => !prev)}
+          className="relative"
+        >
           <span>
+            {isDropdownShown ? "0 selected" : "-- Select your choice --"}
+          </span>
+          <span className="absolute right-0 top-1/2 transform -translate-y-1/2">
             <ChevronDown size={20} />
           </span>
         </button>
@@ -19,7 +24,9 @@ const Dropdown = () => {
           cities.map((city) => (
             <div>
               <input id={`checkbox-${city}`} type="checkbox" />
-              <label htmlFor={`checkbox-${city}`}>{city}</label>
+              <label className="checkbox-label" htmlFor={`checkbox-${city}`}>
+                {city}
+              </label>
             </div>
           ))}
       </div>
