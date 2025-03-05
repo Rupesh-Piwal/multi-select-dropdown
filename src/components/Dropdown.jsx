@@ -4,6 +4,16 @@ import { cities } from "../cities";
 
 const Dropdown = () => {
   const [isDropdownShown, setIsDropdownShown] = useState(false);
+  const [count, setCount] = useState(0);
+
+  const handleCheckCount = (e) => {
+    if (e.target.checked) {
+      setCount((prevCount) => prevCount + 1);
+    } else {
+      setCount((prevCount) => prevCount - 1);
+    }
+  };
+
   return (
     <div>
       <div className="dropdown-toggle">
@@ -12,7 +22,7 @@ const Dropdown = () => {
           className="relative"
         >
           <span>
-            {isDropdownShown ? "0 selected" : "-- Select your choice --"}
+            {isDropdownShown ? `${count} selected` : "-- Select your choice --"}
           </span>
           <span className="absolute right-0 top-1/2 transform -translate-y-1/2">
             <ChevronDown size={20} />
@@ -23,7 +33,11 @@ const Dropdown = () => {
         {isDropdownShown &&
           cities.map((city) => (
             <div>
-              <input id={`checkbox-${city}`} type="checkbox" />
+              <input
+                onChange={handleCheckCount}
+                id={`checkbox-${city}`}
+                type="checkbox"
+              />
               <label className="checkbox-label" htmlFor={`checkbox-${city}`}>
                 {city}
               </label>
